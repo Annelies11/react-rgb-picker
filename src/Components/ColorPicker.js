@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./colorPicker.module.css";
-if ('eyeDropper' in window) {
-    alert("Ora Enek")
+if (window.EyeDropper == undefined) {
+    console.error('EyeDropper API is not supported on this platform');
   }
-
+  
 /**
  * --- TODO: More thing you could do to expand this project:
  *
@@ -18,7 +18,7 @@ const ColorPicker = () => {
   const [image, setImage] = useState(null);
 
   const openEyeDropper = async () => {
-    let eyeDropper = new eyeDropper();
+    let eyeDropper = new window.EyeDropper();
     const { sRGBHex } = await eyeDropper.open();
     setColor(sRGBHex);
   };
